@@ -28,16 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.grpServer = new System.Windows.Forms.GroupBox();
+            this.btnAddServer = new System.Windows.Forms.Button();
+            this.btnDeleteServer = new System.Windows.Forms.Button();
+            this.btnSaveServer = new System.Windows.Forms.Button();
             this.lstServerList = new System.Windows.Forms.ListBox();
             this.txtServerConnectionString = new System.Windows.Forms.TextBox();
             this.txtServerPath = new System.Windows.Forms.TextBox();
             this.lblServerConnectionString = new System.Windows.Forms.Label();
             this.lblServerPath = new System.Windows.Forms.Label();
             this.grpClient = new System.Windows.Forms.GroupBox();
+            this.lstClientList = new System.Windows.Forms.ListBox();
+            this.btnAddClient = new System.Windows.Forms.Button();
+            this.btnDeleteClient = new System.Windows.Forms.Button();
+            this.btnSaveClient = new System.Windows.Forms.Button();
             this.optTSClientNo = new System.Windows.Forms.RadioButton();
             this.optTSClientYes = new System.Windows.Forms.RadioButton();
             this.txtClientPath = new System.Windows.Forms.TextBox();
@@ -47,37 +51,11 @@
             this.grpClient.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(93, 293);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "&Speichern";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(174, 293);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 1;
-            this.btnDelete.Text = "&Löschen";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 293);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "&Neu";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
             // grpServer
             // 
+            this.grpServer.Controls.Add(this.btnAddServer);
+            this.grpServer.Controls.Add(this.btnDeleteServer);
+            this.grpServer.Controls.Add(this.btnSaveServer);
             this.grpServer.Controls.Add(this.lstServerList);
             this.grpServer.Controls.Add(this.txtServerConnectionString);
             this.grpServer.Controls.Add(this.txtServerPath);
@@ -85,10 +63,42 @@
             this.grpServer.Controls.Add(this.lblServerPath);
             this.grpServer.Location = new System.Drawing.Point(12, 12);
             this.grpServer.Name = "grpServer";
-            this.grpServer.Size = new System.Drawing.Size(742, 139);
+            this.grpServer.Size = new System.Drawing.Size(742, 183);
             this.grpServer.TabIndex = 4;
             this.grpServer.TabStop = false;
             this.grpServer.Text = "Server";
+            // 
+            // btnAddServer
+            // 
+            this.btnAddServer.Location = new System.Drawing.Point(6, 154);
+            this.btnAddServer.Name = "btnAddServer";
+            this.btnAddServer.Size = new System.Drawing.Size(75, 23);
+            this.btnAddServer.TabIndex = 11;
+            this.btnAddServer.Text = "&Neu";
+            this.btnAddServer.UseVisualStyleBackColor = true;
+            this.btnAddServer.Click += new System.EventHandler(this.btnAddServer_Click);
+            // 
+            // btnDeleteServer
+            // 
+            this.btnDeleteServer.Enabled = false;
+            this.btnDeleteServer.Location = new System.Drawing.Point(168, 154);
+            this.btnDeleteServer.Name = "btnDeleteServer";
+            this.btnDeleteServer.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteServer.TabIndex = 10;
+            this.btnDeleteServer.Text = "&Löschen";
+            this.btnDeleteServer.UseVisualStyleBackColor = true;
+            this.btnDeleteServer.Click += new System.EventHandler(this.btnDeleteServer_Click);
+            // 
+            // btnSaveServer
+            // 
+            this.btnSaveServer.Enabled = false;
+            this.btnSaveServer.Location = new System.Drawing.Point(87, 154);
+            this.btnSaveServer.Name = "btnSaveServer";
+            this.btnSaveServer.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveServer.TabIndex = 9;
+            this.btnSaveServer.Text = "&Speichern";
+            this.btnSaveServer.UseVisualStyleBackColor = true;
+            this.btnSaveServer.Click += new System.EventHandler(this.btnSaveServer_Click);
             // 
             // lstServerList
             // 
@@ -106,6 +116,7 @@
             this.txtServerConnectionString.Name = "txtServerConnectionString";
             this.txtServerConnectionString.Size = new System.Drawing.Size(387, 23);
             this.txtServerConnectionString.TabIndex = 7;
+            this.txtServerConnectionString.TextChanged += new System.EventHandler(this.txtServer_TextChanged);
             // 
             // txtServerPath
             // 
@@ -113,6 +124,7 @@
             this.txtServerPath.Name = "txtServerPath";
             this.txtServerPath.Size = new System.Drawing.Size(390, 23);
             this.txtServerPath.TabIndex = 6;
+            this.txtServerPath.TextChanged += new System.EventHandler(this.txtServer_TextChanged);
             // 
             // lblServerConnectionString
             // 
@@ -138,17 +150,60 @@
             // 
             // grpClient
             // 
+            this.grpClient.Controls.Add(this.lstClientList);
+            this.grpClient.Controls.Add(this.btnAddClient);
+            this.grpClient.Controls.Add(this.btnDeleteClient);
+            this.grpClient.Controls.Add(this.btnSaveClient);
             this.grpClient.Controls.Add(this.optTSClientNo);
             this.grpClient.Controls.Add(this.optTSClientYes);
             this.grpClient.Controls.Add(this.txtClientPath);
             this.grpClient.Controls.Add(this.lblClientTSClient);
             this.grpClient.Controls.Add(this.lblClientPath);
-            this.grpClient.Location = new System.Drawing.Point(12, 157);
+            this.grpClient.Location = new System.Drawing.Point(12, 221);
             this.grpClient.Name = "grpClient";
-            this.grpClient.Size = new System.Drawing.Size(421, 110);
+            this.grpClient.Size = new System.Drawing.Size(742, 154);
             this.grpClient.TabIndex = 5;
             this.grpClient.TabStop = false;
             this.grpClient.Text = "Client";
+            // 
+            // lstClientList
+            // 
+            this.lstClientList.FormattingEnabled = true;
+            this.lstClientList.ItemHeight = 15;
+            this.lstClientList.Location = new System.Drawing.Point(435, 19);
+            this.lstClientList.Name = "lstClientList";
+            this.lstClientList.Size = new System.Drawing.Size(301, 124);
+            this.lstClientList.TabIndex = 15;
+            // 
+            // btnAddClient
+            // 
+            this.btnAddClient.Location = new System.Drawing.Point(6, 115);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(75, 23);
+            this.btnAddClient.TabIndex = 14;
+            this.btnAddClient.Text = "N&eu";
+            this.btnAddClient.UseVisualStyleBackColor = true;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
+            // 
+            // btnDeleteClient
+            // 
+            this.btnDeleteClient.Enabled = false;
+            this.btnDeleteClient.Location = new System.Drawing.Point(168, 115);
+            this.btnDeleteClient.Name = "btnDeleteClient";
+            this.btnDeleteClient.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteClient.TabIndex = 13;
+            this.btnDeleteClient.Text = "Lös&chen";
+            this.btnDeleteClient.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveClient
+            // 
+            this.btnSaveClient.Enabled = false;
+            this.btnSaveClient.Location = new System.Drawing.Point(87, 115);
+            this.btnSaveClient.Name = "btnSaveClient";
+            this.btnSaveClient.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveClient.TabIndex = 12;
+            this.btnSaveClient.Text = "S&peichern";
+            this.btnSaveClient.UseVisualStyleBackColor = true;
             // 
             // optTSClientNo
             // 
@@ -178,7 +233,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtClientPath.Location = new System.Drawing.Point(6, 37);
             this.txtClientPath.Name = "txtClientPath";
-            this.txtClientPath.Size = new System.Drawing.Size(386, 23);
+            this.txtClientPath.Size = new System.Drawing.Size(390, 23);
             this.txtClientPath.TabIndex = 6;
             // 
             // lblClientTSClient
@@ -207,12 +262,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 343);
+            this.ClientSize = new System.Drawing.Size(772, 412);
             this.Controls.Add(this.grpClient);
             this.Controls.Add(this.grpServer);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnSave);
             this.MaximizeBox = false;
             this.Name = "frmConfigEditor";
             this.ShowIcon = false;
@@ -227,10 +279,6 @@
         }
 
         #endregion
-
-        private Button btnSave;
-        private Button btnDelete;
-        private Button btnAdd;
         private GroupBox grpServer;
         private Label lblServerPath;
         private TextBox txtServerConnectionString;
@@ -243,5 +291,12 @@
         private Label lblClientTSClient;
         private Label lblClientPath;
         private ListBox lstServerList;
+        private Button btnAddServer;
+        private Button btnDeleteServer;
+        private Button btnSaveServer;
+        private ListBox lstClientList;
+        private Button btnAddClient;
+        private Button btnDeleteClient;
+        private Button btnSaveClient;
     }
 }

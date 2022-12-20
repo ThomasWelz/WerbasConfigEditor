@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\Data\Entity.csproj" />
     <ProjectReference Include="..\XML.Contract\XML.Contract.csproj" />
     <ProjectReference Include="..\XML\XML.csproj" />
   </ItemGroup>

@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Data
+﻿namespace Data.Entity
 {
+    /// <summary>
+    /// Server Entity
+    /// </summary>
     public class Server
     {
-
+        /// <summary>
+        /// Path of the Server
+        /// </summary>
         public string Path { get; set; }
 
+        /// <summary>
+        /// ConnectionString of the Server
+        /// </summary>
         public string ConnectionString { get; set; }
     }
 }

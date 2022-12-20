@@ -15,9 +15,11 @@ namespace XML
         private const string PROD_XML_FILE_PATH = @"C:\Werbas\ConfigEditor.xml";
         private const string TEST_XML_FILE_PATH = @"C:\Werbas\Test.xml";
 
-        private const string CON_XML_FILE_PATH = @"C:\Werbas\ConnectionStrings.xml";
+        private const string PROD_CON_XML_FILE_PATH = @"C:\Werbas\ConnectionStrings.xml";
+        private const string TEST_CON_XML_FILE_PATH = @"C:\Werbas\ConnectionStringsTest.xml";
 
         private string _xmlFilePath = string.Empty;
+        private string _conXmlFilePath = string.Empty;
 
         #endregion
 
@@ -44,12 +46,15 @@ namespace XML
             if (isTestMode)
             {
                 _xmlFilePath = TEST_XML_FILE_PATH;
+                _conXmlFilePath = TEST_CON_XML_FILE_PATH;
                 //Start with fresh Data
                 File.Delete(_xmlFilePath);
+                File.Delete(_conXmlFilePath);
             }
             else
             {
                 _xmlFilePath = PROD_XML_FILE_PATH;
+                _conXmlFilePath = PROD_CON_XML_FILE_PATH;
             }
 
             var xmlExist = File.Exists(_xmlFilePath);
@@ -224,7 +229,7 @@ namespace XML
         /// </summary>
         public void SaveConnectionStrings()
         {
-            StreamWriter writer = new StreamWriter(CON_XML_FILE_PATH);
+            StreamWriter writer = new StreamWriter(_conXmlFilePath);
 
             var connections = new Connections();
             connections.ConnectionStrings = new List<string>();

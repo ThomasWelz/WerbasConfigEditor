@@ -1,5 +1,7 @@
+using Data.Entity;
 using Moq;
 using System.Diagnostics.CodeAnalysis;
+using System.Xml.Serialization;
 using XML;
 using XML.Contract;
 
@@ -109,6 +111,32 @@ namespace UnitTest
             var expected = 0;
 
             Assert.AreEqual(expected, actual.Clients.Count);
+        }
+
+        [TestMethod]
+        public void SaveConnectionStrings_Valid()
+        {
+            _xmlManager.SaveConnectionStrings();
+
+            var constXmlFilePath = @"C:\Werbas\ConnectionStringsTest.xml";
+
+            FileInfo fileInfo = new FileInfo(constXmlFilePath);
+            var connections = new Connections();
+            var actual = new Connections();
+            connections.ConnectionStrings = new List<string>();
+
+            if (fileInfo.Exists)
+            {
+                StreamReader reader = new StreamReader(constXmlFilePath);
+                XmlSerializer serializer = new XmlSerializer(actual.GetType());
+                actual = serializer.Deserialize(reader) as Connections;
+                reader.Close();
+            }
+
+            var notExpected = 0;
+
+            Assert.IsNotNull(actual);
+            Assert.AreNotEqual(notExpected, actual.ConnectionStrings.Count);
         }
     }
 }

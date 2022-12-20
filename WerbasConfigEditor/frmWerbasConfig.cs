@@ -126,7 +126,6 @@ namespace WerbasConfigEditor
         /// <param name="e"></param>
         private void btnSaveServer_Click(object sender, EventArgs e)
         {
-            //Check if Path already Exist
             var serverPath = this.txtServerPath.Text.TrimEnd();
             var serverConnectionString = this.txtServerConnectionString.Text.TrimEnd();
 
@@ -140,7 +139,6 @@ namespace WerbasConfigEditor
                     return;
                 }
 
-                //Is Server a new one or an update of a previous selected
                 _xmlManager.AddOrUpdateServer(serverPath, serverConnectionString, _selectedServerPath);
 
                 this.ReadXmlDocument();
@@ -154,7 +152,6 @@ namespace WerbasConfigEditor
         /// <param name="e"></param>
         private void btnSaveClient_Click(object sender, EventArgs e)
         {
-            //Check if Path already Exist
             var clientPath = this.txtClientPath.Text.TrimEnd();
             var isTsClient = this.optTSClientYes.Checked;
 
@@ -168,7 +165,6 @@ namespace WerbasConfigEditor
                     return;
                 }
 
-                //Is Server a new one or an update of a previous selected
                 _xmlManager.AddOrUpdateClient(clientPath, isTsClient, _selectedClientPath);
 
                 this.ReadXmlDocument();
